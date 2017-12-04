@@ -1,6 +1,13 @@
 /*
- *X and Y are positions of PriorityQueue, W and H are the size, 
- *C is the color, and O is either vertical or horizontal postion of PriorityQueues
+ * Basketball ADT 
+ *
+ *
+ * Represents the canvas element and handles the functionality of the Priority Queue. 
+ * 
+ *
+ * @author Brandon Salines
+ * 
+ * 
  */
 function PriorityQueue(x, y, w, h, c) {
     this.x = x;

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <html lang="en">
-    <title>Learning ADT's</title>
+    <title>Basketball ADT</title>
     <!--
 	<link rel="stylesheet" href="css/canvasStyle.css">
 
@@ -33,10 +33,12 @@
             margin-left: auto;
             margin-right: auto;
             overflow: hidden;
+			text-align: center;
+			width: 100%;
         }
 
         canvas {
-            display: block;
+            display: inline;
             margin-left: auto;
             margin-right: auto;
             border-width: 3px;
@@ -69,9 +71,9 @@
         }
 		
 		#displayOptions {
-            float: right;
-			clear: both;
-			margin-top: 20px;
+            float: left;
+			margin-top: 10px;
+			
         }
 	
     </style>
@@ -83,7 +85,7 @@
     <div class="ui-widget-header" id="header">
         <button id="refresh"> </button>
         <button id="help"> </button>
-        <h2> Learning ADT's </h2>
+        <h2> Basketball ADT </h2>
     </div>
 
     <div id="adtButton">
@@ -92,17 +94,16 @@
         <button id="peekButton">Peek</button>
         <button id="randomize">Randomize</button>
 		<button id="shuffle">Shuffle</button>
-
-
-
-
+		
+		
         <div id="adtSelection">
             <input type="radio" name="adtSelect" id="stackSelect" checked="checked">
             <label for="stackSelect">Stack</label>
             <input type="radio" name="adtSelect" id="priorityQueueSelect">
             <label for="priorityQueueSelect">Priority Queue</label>
         </div>
-		
+	  </div>
+        
 		<div id="displayOptions">
 		<input type="checkbox" name="checkbox-1" id="checkbox-1" checked>
         <label for="checkbox-1">Scoreboard</label>
@@ -110,16 +111,19 @@
         <label for="checkbox-2">ADT Data</label>
 		
 		</div>
-    </div>
+
+
+
+		
+		
+  
 
 
     <div class="canvas-div">
         <canvas id="graphCanvas" height="675" width="900" tabindex="0">
 			Your current browser does not support Canvas! Use Firefox or Google Chrome.
 		</canvas>
-
-
-
+		
     </div>
 
 

@@ -1,4 +1,14 @@
-
+/*
+ * Basketball ADT 
+ *
+ *
+ * Tracks the number of balls currently in the ADT's and displays them on the scoreboard
+ * 
+ *
+ * @author Brandon Salines
+ * 
+ * 
+ */
 function Scoreboard(x, y, w, h, c) {
     this.x = x;
     this.y = y;

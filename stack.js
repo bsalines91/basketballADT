@@ -1,6 +1,13 @@
 /*
- *X and Y are positions of Stack, W and H are the size, 
- *C is the color, and O is either vertical or horizontal postion of Stacks
+ * Basketball ADT 
+ *
+ *
+ * Represents the canvas element and handles the functionality of the Stack. 
+ * 
+ *
+ * @author Brandon Salines
+ * 
+ * 
  */
 function Stack(x, y, w, h, c) {
     this.x = x;

@@ -1,6 +1,13 @@
 /*
- *X and Y are positions of holder, W and H are the size, 
- *C is the color, and O is either vertical or horizontal postion of holders
+ * Basketball ADT 
+ *
+ *
+ * This class represents the canvas elements that contain the balls when in 
+ * the input or output state.
+ *  
+ * @author Brandon Salines
+ * 
+ * 
  */
 function Holder(x, y, w, h, c, o) {
     this.x = x;
@@ -17,7 +24,6 @@ function Holder(x, y, w, h, c, o) {
 Holder.prototype.draw = function(context) {
 
     context.save();
-
 
     context.fillStyle = this.color;
     context.strokeStyle = this.color;
@@ -56,7 +62,6 @@ Holder.prototype.hit = function(x, y, obj) {
 }
 Holder.prototype.put = function(b) {
     var bParent = b.getParent();
-    console.log(bParent);
 
     if (bParent != this) {
         if (this.o == "h") {
@@ -81,7 +86,7 @@ Holder.prototype.put = function(b) {
 
 
             if ( b == this.hBalls[i] ) continue;
-	    console.log("hit i="+i, b.x, b.y, this.hBalls[i].x, this.hBalls[i].y)
+	
 		         if ( b.hit( this.hBalls[i].x, this.hBalls[i].y )
 					 && this.hBalls[i].hit(b.x, b.y) ){
 					
@@ -105,15 +110,11 @@ Holder.prototype.put = function(b) {
         }
 		}
 	
-        for (var i = 0; i < this.hBalls.length; i++) {
-            console.log(this.hBalls[i]);
-
-        }
-
+     
 
 
     } else if (bParent == this && this.adtChange) {
-        console.log("passed");
+        
         this.hBalls[this.index] = b;
         this.hBalls[this.index].setParent(this);
         this.hBalls[this.index].x = (this.x + this.hBalls[this.index].radius + 5) + (this.index * (2 * this.hBalls[this.index].radius + 10));

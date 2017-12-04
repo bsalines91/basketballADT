@@ -1,3 +1,14 @@
+/*
+ * Basketball ADT 
+ *
+ *
+ * Represents the canvas ball elements and ball numbers 
+ * 
+ *
+ * @author Brandon Salines
+ * 
+ * 
+ */
 function Ball(x, y, r, c, sAngle, eAngle, bn, id) {
     this.x = x;
     this.y = y;
