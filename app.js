@@ -266,7 +266,14 @@ $(
         });
 
         $("#peekButton").mouseup(function() {
+			
+            adt.peek = false;
+            drawIt(context);
 
+        });
+		 
+		$("#peekButton").mouseleave(function() {
+			
             adt.peek = false;
             drawIt(context);
 
@@ -335,7 +342,14 @@ $(
         * Styles the buttons, check boxes, and radio elements using jQuery UI 
 	    *
 	    */
-
+		
+		$('button').mouseup(function() { this.blur() });
+		
+		$('input').click(function() {
+		if (!$('input').prop('checked')){
+			$(this).blur();
+		}
+		});
 
         $("button").button();
 
@@ -419,12 +433,31 @@ $(
 	    */
 
         $("#help").click(function() {
-            var helpBox = document.createElement("div");
-            helpBox.id = "helpBox"
-            document.body.appendChild(helpBox);
-            $('#helpBox').dialog({
-                title: "Help",
+          //  var helpBox = document.createElement("div");
+          //  helpBox.id = "helpBox"
+          //  document.body.appendChild(helpBox);
+            $('<div></div>').dialog({
+                modal: true,
+				title: "Help",
                 width: 400,
+				open: function () {
+					$(this).html (`Buttons:  <br/> 
+							       Push/Enqueue: adds an item to the ADT <br/> 
+								   Pop/Dequeue: removes an item from the ADT <br/> 
+								   Peek: pressing and holding will display the top value <br/>  
+								   Randomize: Replaces ball numbers with a random value (1-99)<br/> 
+								   Shuffle: rearranges the order of the balls <br/> <br/> 
+								   Selectors: <br/> 
+								   Scoreboard: Toggles the display of the scoreboard <br/> 
+								   ADT Data: Toggles the display of the balls currently in the ADT <br/> 
+								   Stack/Priority Queue: Toggles the ADT between the two <br/> <br/> 
+								   Controls: <br/> 
+								   Refresh: restores the program to its original state <br/> 
+								   Help: Displays the helpbox <br/> <br/> 
+								   Drag & Drop: Balls may be added to the ADT by dragging them 
+								   over the pole and releasing<br/> 
+								   `);
+				},
                 position: {
                     my: "right top",
                     at: "right bottom",
@@ -435,15 +468,42 @@ $(
                     click: function() {
                         $(this).dialog("close");
                     }
-
+				
 
                 }]
-
+			  
             });
-
+			
         });
 
+        $("#refresh").click(function() {
+			    holder1.adtChange = true;
+				adt.removeAll();
 
+                holder1.removeAll();
+                holder2.removeAll();
+
+                scoreboard.clear();
+
+                for (var i = 0; i < 10; i++) {
+                    holder1.put(balls[i]);
+					holder1.hBalls[i].ballNum = i;
+                }
+
+
+                adt = new Stack(360, 200, 57, 331);
+                $("#putButton").text("Push");
+                $("#getButton").text("Pop");
+				$("#checkbox-1").prop('checked', true).checkboxradio("refresh");
+				$("#checkbox-2").prop('checked', false).checkboxradio("refresh");
+				$("#stackSelect").prop('checked', true).checkboxradio("refresh");
+				$("#priorityQueueSelect").prop('checked', false).checkboxradio("refresh");
+                drawIt(context);
+
+                holder1.adtChange = false;
+			
+			
+		});
 
         /*
         * 
@@ -509,6 +569,7 @@ $(
         };
         imageObj.src = "hoop.png";
 
+		
 
         drawIt(context);
 
